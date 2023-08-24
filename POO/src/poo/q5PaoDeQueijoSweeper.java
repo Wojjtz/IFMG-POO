@@ -4,7 +4,6 @@
  */
 package poo;
 
-import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -18,15 +17,12 @@ public class q5PaoDeQueijoSweeper {
         linha = in.nextInt();
         coluna = in.nextInt();
         int mat[][] = new int[linha][coluna];
-        int mat2[][] = new int[linha][coluna];
-        
-        Random rnd = new Random();
         
         for (int i = 0; i < linha; i++) {
             for (int j = 0; j < coluna; j++) {
                 mat[i][j] = in.nextInt();
                 if(mat[i][j] == 1){
-                    mat2[i][j] = 9;
+                    mat[i][j] = 9;
                 }
             }
         }
@@ -34,24 +30,24 @@ public class q5PaoDeQueijoSweeper {
         for (int i = 0; i < linha; i++) {
             for (int j = 0; j < coluna; j++) {
                 if(mat[i][j] == 0){
-                    if(mat[i - 1][j] == 1){
-                        mat2[i][j] += 1;
+                    if(i-1 >= 0 && mat[i-1][j] == 9){
+                        mat[i][j]++;
                     }
-                    if(mat[i + 1][j] == 1){
-                        mat2[i][j] += 1;
+                    if(i+1 < linha && mat[i+1][j] == 9){
+                        mat[i][j]++;
                     }
-                    if(mat[i][j - 1] == 1){
-                        mat2[i][j] += 1;
+                    if(j-1 >= 0 && mat[i][j-1] == 9){
+                        mat[i][j]++;
                     }
-                    if(mat[i][j + 1] == 1){
-                        mat2[i][j] += 1;
+                    if(j+1 < coluna && mat[i][j+1] == 9){
+                        mat[i][j]++;
                     }
                 }
             }
         }
         for (int i = 0; i < linha; i++) {
             for (int j = 0; j < coluna; j++) {
-                System.out.println(mat2[i][j]);
+                System.out.print(mat[i][j] + " ");
             }
             System.out.println();
         }
