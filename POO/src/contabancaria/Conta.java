@@ -10,11 +10,24 @@ package contabancaria;
  */
 public class Conta {
     String titular;
-    int numero;
+    String numero;
     double saldo;
     
-    public double consultarSaldo(){
-        System.out.println("Titular: " + titular + "\nNúmero: " + numero + "\nSaldo: " + saldo);
-        return 0;
+    public void consultarInformacoes(){
+        System.out.println("Titular: " + this.titular + "\nNúmero: " + this.numero + "\nSaldo: R$" + this.saldo);
+    }
+    
+    public void depositar(double valor){
+        this.saldo += valor;
+        System.out.println("Valor depositado: R$"+ valor + "\nSaldo atual: R$"+ this.saldo);
+    }
+    
+    public void sacar(double valor){
+        if(valor <= this.saldo){
+            this.saldo -= valor;
+            System.out.println("Valor sacado: R$"+ valor + "\nSaldo atual: R$"+ this.saldo);
+        }else{
+            System.out.println("Saldo indiponível. \nSaldo atual: R$ "+ this.saldo);
+        }
     }
 }

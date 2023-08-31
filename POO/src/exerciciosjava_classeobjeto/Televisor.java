@@ -13,66 +13,86 @@ public class Televisor {
     int canal = 1;
     int volume = 0;
     boolean ligado = false;
-    
-    public void ligarTV(){
-        if(ligado == true){
+
+    public void ligarTV() {
+        if (ligado == true) {
             System.out.println("TV já ligada.");
-        }else{
+        } else {
             ligado = true;
             System.out.println("TV ligada.");
         }
     }
-    
-    public void desligarTV(){
-        if(ligado == false){
+
+    public void desligarTV() {
+        if (ligado == false) {
             System.out.println("TV já desligada.");
-        }else{
+        } else {
             ligado = false;
             System.out.println("TV desligada.");
         }
     }
-    
-    public void aumentarVolume(){
-        if(volume == 10){
-            System.out.println("Volume no máximo! 10");
+
+    public void aumentarVolume() {
+        if (ligado == true) {
+            if (volume == 10) {
+                System.out.println("Volume no máximo! 10");
+            } else {
+                volume++;
+                System.out.println("Volume aumentado: " + volume);
+            }
         }else{
-            volume++;
-            System.out.println("Volume aumentado: "+ volume);
+            System.out.println("TV desligada.");
         }
     }
-    
-    public void diminuirVolume(){
-        if(volume == 0){
-            System.out.println("Volume no minimo! 0");
+
+    public void diminuirVolume() {
+        if (ligado == true) {
+            if (volume == 0) {
+                System.out.println("Volume no minimo! 0");
+            } else {
+                volume--;
+                System.out.println("Volume diminuido: " + volume);
+            }
         }else{
-            volume--;
-            System.out.println("Volume diminuido: "+ volume);
+            System.out.println("TV desligada.");
         }
     }
-    
-    public void subirCanal(){
-        if(canal == 16){
-            canal = 1;
+
+    public void subirCanal() {
+        if (ligado == true) {
+            if (canal == 16) {
+                canal = 1;
+            } else {
+                canal++;
+            }
+            System.out.println("Canal: " + canal);
         }else{
-            canal++;
+            System.out.println("TV desligada.");
         }
-        System.out.println("Canal: " + canal);
     }
-    
-    public void descerCanal(){
-        if(canal == 1){
-            canal = 16;
+
+    public void descerCanal() {
+        if (ligado == true) {
+            if (canal == 1) {
+                canal = 16;
+            } else {
+                canal--;
+            }
+            System.out.println("Canal: " + canal);
         }else{
-            canal--;
+            System.out.println("TV desligada.");
         }
-        System.out.println("Canal: " + canal);
     }
-    
-    public void mostrarStatus(){
-        if(ligado == true){
-            System.out.println("A TV está ligada \nCanal: "+ canal +"\nVolume: "+ volume);
+
+    public void mostrarStatus() {
+        if (ligado == true) {
+            if (ligado == true) {
+                System.out.println("A TV está ligada \nCanal: " + canal + "\nVolume: " + volume);
+            } else {
+                System.out.println("A TV está desligada.");
+            }
         }else{
-            System.out.println("A TV está desligada.");
+            System.out.println("TV desligada.");
         }
     }
 }

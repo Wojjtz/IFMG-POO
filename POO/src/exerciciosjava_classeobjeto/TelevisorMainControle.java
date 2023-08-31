@@ -28,10 +28,10 @@ public class TelevisorMainControle {
                     tv.ligarTV();
                     break;
                 case 2:
-                    tv.subirCanal();
+                    tv.desligarTV();
                     break;
                 case 3:
-                    tv.desligarTV();
+                    tv.subirCanal();
                     break;
                 case 4:
                     tv.descerCanal();
