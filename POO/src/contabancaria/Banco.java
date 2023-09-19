@@ -11,64 +11,49 @@ import java.util.Scanner;
  * @author 0057149
  */
 public class Banco {
+
     public static void main(String[] args) {
-        Conta conta = new Conta();
-        Conta conta2 = new Conta();
-        
-        conta.titular = "Rodolfo";
-        conta.numero = "001702";
-        conta.saldo = 1000;
-        conta2.titular = "Eduardo";
-        conta2.numero = "001135";
-        conta2.saldo = 1000;
-        
-        int op, c;
-        double valor = 0;
-        
+        boolean menuOn;
+        double valor;
         Scanner in = new Scanner(System.in);
-        /*
-        System.out.println("Nome do titular: ");
-        conta.titular = in.next();
-        System.out.println("Número da conta: ");
-        conta.numero = in.next();
-        System.out.println("Saldo da conta: ");
-        conta.saldo = in.nextDouble();     
-        */
-        System.out.println("MENU\n0. Consultar informações \n1. Depositar \n2. Sacar \n3. Transferir \n-1. Sair");
+
+        Cliente cliente = new Cliente();
+        System.out.println("BANCO doCASH \nNome da conta: ");
+        cliente.setNome(in.nextLine());
+        System.out.println("CPF ('XXX.XXX.XXX-XX'):");
+        cliente.setCpf(in.nextLine());
+        System.out.println("Endereço: ");
+        cliente.setEnd(in.nextLine());
+        cliente.criarContaBancaria(cliente.getNome());
+        System.out.println("Conta criada com sucesso!");
+        
+        System.out.println("BANCO doCASH: \n1. Informações da conta \n2. Depositar \n3. Sacar \n4. Transferir \n0. Sair");
         do {
-            System.out.print("Opção: ");op = in.nextInt();
-            switch (op) {
-                case 0:
-                    conta.consultarInformacoes();
-                    break;
+            int opcao = in.nextInt();
+            switch (opcao) {
                 case 1:
-                    System.out.println("Digite o valor a ser depositado: ");
-                    valor = in.nextDouble();
-                    conta.depositar(valor);
+                    cliente.getInformacoes();
                     break;
                 case 2:
-                    System.out.println("Digite o valor a ser sacado: ");
+                    System.out.println("Valor a depositar: ");
                     valor = in.nextDouble();
-                    conta.sacar(valor);
+                    cliente.getContaBancaria().setSaldo(valor);
                     break;
                 case 3:
-                    System.out.println("Conta origem: ");
-                    c = in.nextInt();
-                    System.out.println("Valor a ser transferido: ");
+                    System.out.println("Valor a sacar: ");
                     valor = in.nextDouble();
-                    if(c == 1){
-                        conta.transferir(conta2, valor);
-                        conta.consultarInformacoes();
-                        conta2.consultarInformacoes();
-                    }else{
-                        conta2.transferir(conta, valor);
-                        conta2.consultarInformacoes();
-                        conta.consultarInformacoes();
-                    }
+                    cliente.getContaBancaria().getSacar(valor);
                     break;
+                case 4:
+                    System.out.println("Conta destino: ");
+                    Cliente c2 = new Cliente();
+                    System.out.println("Valor a transferir: ");
+                    valor = in.nextDouble();
+                    cliente.getContaBancaria().transferir(c2, valor);
                 default:
-                    System.out.println("Opção indisponível.");
+                    menuOn = false;
             }
-        } while (op >= 0);
+        } while (menuOn = true);
+
     }
 }

@@ -4,26 +4,20 @@
  */
 package contabancaria;
 
+import java.util.Random;
+
 /**
  *
  * @author 0057149
  */
 public class Conta {
 
-    String titular;
-    String numero;
-    double saldo;
+    Random rnd = new Random(); // rnd.nextInt((max - min) + 1) + min;
+    public String titular;
+    private int numero;
+    private double saldo;
 
-    public void consultarInformacoes() {
-        System.out.println("Titular: " + this.titular + "\nNúmero: " + this.numero + "\nSaldo: R$" + this.saldo);
-    }
-
-    public void depositar(double valor) {
-        this.saldo += valor;
-        System.out.println("Valor depositado: R$" + valor + "\nSaldo atual: R$" + this.saldo);
-    }
-
-    public void sacar(double valor) {
+    public void getSacar(double valor) {
         if (valor <= this.saldo) {
             this.saldo -= valor;
             System.out.println("Valor sacado: R$" + valor + "\nSaldo atual: R$" + this.saldo);
@@ -32,13 +26,44 @@ public class Conta {
         }
     }
 
-    public void transferir(Conta destino, double valor) {
-        
+    public void transferir(Cliente destino, double valor) {
+
         if (valor <= this.saldo) {
             this.saldo -= valor;
-            destino.saldo += valor;
-        }else{
+            destino.getContaBancaria().setSaldo(valor);
+        } else {
             System.out.println("Saldo insuficiente para fazer a transferência.");
         }
     }
+    
+    public double getSaldo() {
+        return saldo;
+    }
+    
+    public void setSaldo(double valor) {
+        if (valor >= 0) {
+            this.saldo += valor;
+            System.out.println("Valor depositado: R$" + valor + "\nSaldo atual: R$" + this.saldo);
+        }else{
+            System.out.println("Impossível inserir valor negativo.");
+        }
+    }
+
+    public String getTitular() {
+        return titular;
+    }
+
+    public void setTitular(String titular) {
+        this.titular = titular;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = rnd.nextInt(999);
+    }
+    
+    
 }
