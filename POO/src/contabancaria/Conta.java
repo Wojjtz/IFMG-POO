@@ -58,12 +58,6 @@ public class Conta {
     }
 
     public int getNumero() {
-        return numero;
+        return rnd.nextInt(999);
     }
-
-    public void setNumero(int numero) {
-        this.numero = rnd.nextInt(999);
-    }
-    
-    
 }

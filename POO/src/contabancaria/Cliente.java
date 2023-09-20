@@ -24,8 +24,8 @@ public class Cliente {
     }
     
     public void getInformacoes(){
-        System.out.println("Nome: " + getNome() + "\nCPF: " + getCpf() + "\nEndereço: " + getEnd());
-        System.out.println("Número: " + contaBancaria.getNumero() + "\nSaldo: R$"+ contaBancaria.getSaldo());
+        System.out.println("Nome: " + this.getNome() + "\nCPF: " + this.getCpf() + "\nEndereço: " + this.getEnd());
+        System.out.println("Conta Bancária: \n\tNúmero: " + this.contaBancaria.getNumero() + "\n\tSaldo: R$"+ this.contaBancaria.getSaldo());
     }
     public Conta getContaBancaria(){
         return contaBancaria;
@@ -40,7 +40,7 @@ public class Cliente {
     }
 
     public String getCpf() {
-        return formatCPF(cpf);
+        return formatCPF(this.cpf);
     }
 
     public void setCpf(String cpf) {
