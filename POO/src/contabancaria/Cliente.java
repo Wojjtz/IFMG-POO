@@ -12,7 +12,7 @@ import java.util.Random;
  */
 public class Cliente {
     private String nome, cpf, end;
-    private Conta contaBancaria = new Conta();
+    private Conta contaBancaria = new Conta(this.nome);
     public void setInfo(String nome, String cpf, String end){
         this.setNome(nome);
         this.setCpf(formatCPF(cpf));
@@ -23,9 +23,23 @@ public class Cliente {
         contaBancaria.titular = getNome();
     }
     
+    public Cliente(String nome, String cpf, String end) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.end = end;
+    }
+    
+    public Cliente(){
+        this.nome = null;
+        this.cpf = null;
+        this.end = null;
+    }
+    
     public void getInformacoes(){
-        System.out.println("Nome: " + this.getNome() + "\nCPF: " + this.getCpf() + "\nEndereço: " + this.getEnd());
-        System.out.println("Conta Bancária: \n\tNúmero: " + this.contaBancaria.getNumero() + "\n\tSaldo: R$"+ this.contaBancaria.getSaldo());
+        System.out.println("---------------------------\n"
+                + "Nome: " + this.getNome() + "\nCPF: " + this.getCpf() + "\nEndereço: " + this.getEnd());
+        System.out.println("Conta Bancária: \n\tNúmero: " + this.contaBancaria.getNumero() + "\n\tSaldo: R$"+ this.contaBancaria.getSaldo() 
+                + "\n---------------------------");
     }
     public Conta getContaBancaria(){
         return contaBancaria;
