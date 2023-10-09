@@ -19,6 +19,7 @@ public class Conta {
     private double saldo;
     private ArrayList<Cliente> clientes = Banco.clientes;
     private boolean verificador = false;
+    
     public Conta(String titular) {
         this.titular = titular;
         this.numero = rnd.nextInt(999);
