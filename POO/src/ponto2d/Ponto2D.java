@@ -47,10 +47,6 @@ public class Ponto2D {
         return Math.sqrt(Math.pow(this.getX() - obj.getX() , 2) + Math.pow(this.getY() - obj.getY(), 2));
     }
     
-    public Ponto2D clone(){ 
-        return this.clone();
-    }
-    
     public boolean equals (Object obj){
         Ponto2D p = (Ponto2D)obj; //cast
         return this.x == p.getX() && this.y == p.getY();
