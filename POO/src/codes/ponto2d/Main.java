@@ -14,6 +14,8 @@ public class Main {
         Ponto2D p2 = new Ponto2D(3,5);
         Ponto2D p3 = new Ponto2D(p2);
         
+ 
+        
         if(p2.equals(p3)){
             System.out.println("Iguais");
         }else{
