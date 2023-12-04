@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package codes.funcionario.classes;
+package codes.funcionario.classes.funcionarios;
+
+import codes.funcionario.classes.Funcionario;
 
 /**
  *
@@ -30,4 +32,15 @@ public class Assistente extends Funcionario {
         this.numeroMatricula = numeroMatricula;
     }
 
+    @Override
+    public String toString() {
+        return "Assistente{" + "numeroMatricula=" + numeroMatricula + '}';
+    }
+
+    @Override
+    public double calcularBonificacao() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    
 }

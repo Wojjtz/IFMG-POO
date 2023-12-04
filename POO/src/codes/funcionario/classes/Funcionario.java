@@ -8,7 +8,7 @@ package codes.funcionario.classes;
  *
  * @author rodol
  */
-public class Funcionario {
+public abstract class Funcionario {
 
     protected String nome;
     protected String cpf;
@@ -20,9 +20,10 @@ public class Funcionario {
         this.salario = salario;
     }
 
-    public double calcularBonificacao() {
-        return (this.salario * 0.2);
+    public Funcionario() {
     }
+
+    public abstract double calcularBonificacao();
 
     public void exibirInformacoes() {
         System.out.println("Nome: " + this.nome + 
@@ -51,7 +52,7 @@ public class Funcionario {
     }
 
     public String getCpf() {
-        return cpf;
+        return formatarCPF(this.cpf);
     }
 
     public void setCpf(String cpf) {
@@ -70,4 +71,18 @@ public class Funcionario {
         return this.salario * 12;
     }
 
+    @Override
+    public String toString() {
+        return "Funcionario{" + "nome=" + nome + ", cpf=" + cpf + ", salario=" + salario + '}';
+    }
+    
+    private static String formatarCPF(String cpf) {
+        if (cpf.length() != 11) {
+            throw new IllegalArgumentException("O CPF deve conter exatamente 11 dígitos.");
+        }
+
+        return cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "." + cpf.substring(6, 9) + "-" + cpf.substring(9);
+    }
+    
+    
 }

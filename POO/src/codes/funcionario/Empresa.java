@@ -4,10 +4,10 @@
  */
 package codes.funcionario;
 
-import codes.funcionario.classes.Administrativo;
+import codes.funcionario.classes.funcionarios.assistentes.Administrativo;
 import codes.funcionario.classes.Funcionario;
-import codes.funcionario.classes.Gerente;
-import codes.funcionario.classes.Tecnico;
+import codes.funcionario.classes.funcionarios.Gerente;
+import codes.funcionario.classes.funcionarios.assistentes.Tecnico;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -45,7 +45,7 @@ public class Empresa {
                     double salario = in.nextDouble();
 
                     gerentes.add(new Gerente(nome, formatarCPF(cpf), salario, senha));
-                    System.out.println(gerentes.get(0).bonificacao());
+                    System.out.println(gerentes.get(0).calcularBonificacao());
                     break;
                 case 2:
                     if (gerentes.isEmpty()) {
